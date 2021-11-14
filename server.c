@@ -39,14 +39,14 @@ int main(void) {
 		recv(clientSocket, &clientMessage, sizeof(clientMessage), 0);
 		printf("Client message: %s\n", clientMessage);
 
-        // If the client typed "exit", the server will shut itself down.
-        closeServer_status = strncmp("exit", clientMessage, 4);
-        if (closeServer_status == 0) {
-            printf("\n");
-            printf("OK, server is shutting down...\n");
-            printf("\n");
-            break;
-        }
+		// If the client typed "exit", the server will shut itself down.
+		closeServer_status = strncmp("exit", clientMessage, 4);
+		if (closeServer_status == 0) {
+			printf("\n");
+			printf("OK, server is shutting down...\n");
+			printf("\n");
+			break;
+		}
 	}
 
 	// This will be reached upon exit
