@@ -16,7 +16,7 @@ int main(void) {
 	char   serverResponse[256];
 	char   clientMessage[256];
 	struct sockaddr_in serverAddress;
-    static char userInput[20];
+	static char userInput[20];
 
 	// Create a Socket
 	networkSocket = socket(AF_INET, SOCK_STREAM, 0);
@@ -32,11 +32,11 @@ int main(void) {
 	while (1) {
 
 		// Prompt the user for a message to send to the server
-    	puts("");
-    	fputs(": ", stdout);
-	    fgets(userInput, sizeof(userInput), stdin);
+		puts("");
+		fputs(": ", stdout);
+		fgets(userInput, sizeof(userInput), stdin);
 
-	    // Strip off the newline character
+		// Strip off the newline character
 		userInput[strcspn(userInput, "\n")] = 0;
 
 		strcpy(clientMessage, userInput);
@@ -48,12 +48,12 @@ int main(void) {
 		// Display whatever message the server has sent
 		printf("Server message: %s\n", serverResponse);
 
-        // If we type "exit", the server will shut itself down,
-        // therefore we will close down the client side as well.
-        closeServer_status = strncmp("exit", clientMessage, 4);
-        if (closeServer_status == 0) {
-            break;
-        }
+		// If we type "exit", the server will shut itself down,
+		// therefore we will close down the client side as well.
+		closeServer_status = strncmp("exit", clientMessage, 4);
+		if (closeServer_status == 0) {
+			break;
+		}
 	}
 
 	close(networkSocket);
